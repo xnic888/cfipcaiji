@@ -5,7 +5,7 @@ import os
 
 # 目标URL列表
 urls = [
-       # 'https://monitor.gacjie.cn/page/cloudflare/ipv4.html', 
+       'https://monitor.gacjie.cn/page/cloudflare/ipv4.html', 
         'https://ip.164746.xyz'
         # 'https://stock.hostmonit.com/CloudFlareYes'
         ]
@@ -43,18 +43,18 @@ with open('ip.txt', 'w') as file:
             for ip in ip_matches:
                 file.write(ip + '\n')
     
-    response = requests.post('https://api.hostmonit.com/get_optimization_ip', json={"key": "iDetkOys"})
-    if response.status_code == 200:
-        # 解析响应内容为JSON
-        response_json = response.json()
+    # response = requests.post('https://api.hostmonit.com/get_optimization_ip', json={"key": "iDetkOys"})
+    # if response.status_code == 200:
+    #     # 解析响应内容为JSON
+    #     response_json = response.json()
         
-        # 提取info列表
-        info_list = response_json.get('info', [])
+    #     # 提取info列表
+    #     info_list = response_json.get('info', [])
         
-        # 提取所有IP地址并打印
-        ip_list = [item['ip'] for item in info_list if 'ip' in item]
-        for ip in ip_list:
-            file.write(ip + '\n')
-    else:
-        print("Error:", response.status_code)
+    #     # 提取所有IP地址并打印
+    #     ip_list = [item['ip'] for item in info_list if 'ip' in item]
+    #     for ip in ip_list:
+    #         file.write(ip + '\n')
+    # else:
+    #     print("Error:", response.status_code)
 print('IP地址已保存到ip.txt文件中。')
